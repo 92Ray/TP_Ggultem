@@ -57,7 +57,11 @@ public class MypageController {
     	List<String> oldFileNames = oldMemberDTO.getUploadFileNames();
         
         List<MultipartFile> files = memberDTO.getFiles();
-        List<String> currentUploadFileNames = fileUtil.saveFiles(files);
+        
+        List<String> currentUploadFileNames = null;
+        if(files != null && !files.get(0).isEmpty()) {
+        	currentUploadFileNames = fileUtil.saveFiles(files);
+        }
         
         List<String> uploadFileNames = memberDTO.getUploadFileNames();
         
