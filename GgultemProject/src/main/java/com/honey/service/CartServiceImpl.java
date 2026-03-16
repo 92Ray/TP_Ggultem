@@ -66,7 +66,6 @@ public class CartServiceImpl implements CartService {
 	public PageResponseDTO<CartDTO> list(PageRequestDTO pageRequestDTO) {
 		Pageable pageable = PageRequest.of(pageRequestDTO.getPage() -1, pageRequestDTO.getSize(),
 				Sort.by("id").descending());
-		Page<Cart> result = cartRepository.findAllList(pageable);
 		return null;
 	}
 
