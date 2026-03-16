@@ -68,7 +68,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public PageResponseDTO<CartDTO> list(SearchDTO searchDTO) {
+	public PageResponseDTO<CartDTO> list(SearchDTO searchDTO, Long memberNo) {
 		Pageable pageable = PageRequest.of(searchDTO.getPage() -1, searchDTO.getSize(),
 				Sort.by("id").descending());
 		Page<Cart> result = null;
@@ -77,7 +77,7 @@ public class CartServiceImpl implements CartService {
 			result = cartRepository.searchByCondition(
 					searchDTO.getSearchType(),
 					searchDTO.getKeyword(),
-					pageable);
+					pageable, memberNo);
 		}else {
 			result = cartRepository.findAll(pageable);
 		}
