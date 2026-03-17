@@ -156,5 +156,4 @@ public class BoardServiceImpl implements BoardService {
 				.totalCount(result.getTotalElements()).build();
 	}
 	
-	
 }

@@ -70,9 +70,10 @@ public class NoticeServiceImpl implements NoticeService {
 	    List<String> uploadFileNames = fileUtil.saveFiles(noticeDTO.getFiles());
 	    
 	    // 2. [작성자 매핑] 빌더를 이용해 이메일만 담긴 Member 객체 생성
-	    Member member = Member.builder()
-	            .email(noticeDTO.getMemberEmail())
-	            .build();
+//	    Member member = Member.builder()
+//	            .email(noticeDTO.getMemberEmail())
+//	            .build();
+	    Member member = memberRepository.findById(noticeDTO.getMemberEmail()).orElseThrow();
 
 	    // 3. [엔티티 빌드] 공지사항 객체 생성
 	    Notice notice = Notice.builder()
